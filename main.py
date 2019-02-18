@@ -15,12 +15,12 @@ def crond():
             n += 1
     return cronds
 print(crond())
-get_time=time.strftime('%m-%d',time.localtime())
 # print(time)
 
 #设定一天计时器
 daysec=24*60*60
 def exec():
+    get_time=time.strftime('%m-%d',time.localtime())
     for n in range(len(crond())):
         if get_time[:5]==crond()[n]['time'][:5]:
             contents='时间：%s 任务：%s'%(crond()[n]['time']  ,crond()[n]['content']   )
@@ -28,7 +28,6 @@ def exec():
     #开始计时
     time.sleep(daysec)
     exec()
-
 
 if __name__=="__main__":
     itchat.auto_login(hotReload=True)
